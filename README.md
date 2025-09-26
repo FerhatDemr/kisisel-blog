@@ -32,9 +32,8 @@ Bu projede kendimi tanıttığım, hedeflerimi ve becerilerimi paylaştığım b
 
 ---
 
-## 🚀 Kurulum
-Projeyi kendi bilgisayarında çalıştırmak için:
+## 🚀 Geliştirici
+** Ferhat Demir **
+** 2211012070 **
 
-```bash
-git clone https://github.com/FerhatDemr/kisisel-blog.git
-cd kisisel-blog
+
