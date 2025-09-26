@@ -33,7 +33,7 @@ Bu projede kendimi tanıttığım, hedeflerimi ve becerilerimi paylaştığım b
 ---
 
 ## 🚀 Geliştirici
-** Ferhat Demir **
-** 2211012070 **
+**Ferhat Demir**
+**2211012070**
 
 
