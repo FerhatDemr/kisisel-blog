@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FERHAT'S BLOG</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">FERHAT DEMİR</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
+          </li>
+
+          
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sosyal Medya
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="https://www.instagram.com/ferhat.demr_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="bi bi-instagram me-2" aria-hidden="true"></i> Instagram
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center" href="https://www.linkedin.com/in/ferhat-demir-2a0b40245/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="bi bi-linkedin me-2" aria-hidden="true"></i> LinkedIn
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center" href="https://github.com/FerhatDemr" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="bi bi-github me-2" aria-hidden="true"></i> GitHub
+                </a>
+            </li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container my-4">
+
+  
+  <section class="row align-items-center g-4">
+    <div class="col-md-4 text-center">
+      
+    <img src="assets/images/profile.jpg"
+     alt="Ferhat Demir"
+     class="img-fluid"
+     style="width:160px; height:160px; object-fit:cover; border-radius:6px;">
+
+      <p class="small text-muted mt-2">FERHAT DEMİR</p>
+    </div>
+
+    <div class="col-md-8">
+      <h2 class="h4 mb-2">Merhaba, ben Ferhat</h2>
+      <p class="mb-1">Süleyman Demirel Üniversitesi'nde Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Dersler ve kişisel projeler 
+        aracılığıyla web geliştirme ve mobil uygulama geliştirme (özellikle .NET MAUI) konularında pratik yapıyorum.</p>
+      
+      
+    </div>
+  </section>
+  <!-- İLGİ ALANLARI (kısa) -->
+  <section class="mt-4 text-center">
+  <h3 class="h6 mb-2">İlgi Alanlarım</h3>
+    <ul class="list-unstyled small mx-auto" style="max-width:360px;">
+      <li>• Web geliştirme (HTML/CSS/JS)</li>
+      <li>• Mobil uygulama (.NET MAUI)</li>
+      <li>• Veri Madenciliği</li>
+      <li>• Makine Öğrenmesi</li>
+    </ul>
+  </section>
+
+  <!-- GÖMÜLÜ VIDEO  -->
+  <section class="mt-4">
+    
+
+    <!-- YouTube embed: VIDEO_ID yerine gerçek id koy -->
+    <div class="mx-auto" style="max-width:560px;">
+    <div class="ratio ratio-16x9">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/O9vO_CVNXlg?si=st2LKizKTUdo3Ci9" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>    </div>
+
+    
+  </section>
+
+  
+
+  
+
+</main>
+
+  <footer class="footer fixed-bottom bg-dark text-light py-2">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div><small>© <span id="site-year-2"></span> <strong>FERHAT DEMİR</strong></small></div>
+    <div><small>Tel: <a href="tel:+905xxxxxxxxx" class="text-decoration-none text-light">+90 536 784 3900</a></small></div>
+  </div>
+</footer>
+<script>
+  document.getElementById('site-year-2').textContent = new Date().getFullYear();
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
