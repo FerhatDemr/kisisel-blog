@@ -5,12 +5,90 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FERHAT'S BLOG</title>
 
-  <!-- Bootstrap CSS (CDN) -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --muted:#6c757d;
+      --accent:#0b5fff;
+      --footer-height:68px; 
+    }
+
+    /* Genel sayfa düzeni */
+    html,body { height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:#f6f8fb;
+      color:#111827;
+      padding-bottom: var(--footer-height); 
+    }
+
+    /* Container paddings */
+    main.container {
+      padding-top:1.5rem;
+      padding-bottom:1.5rem;
+      max-width: 980px;
+    }
+
+    /* Profil resim */
+    .profile-img {
+      width:260px;
+      height:300px;            
+      object-fit:cover;
+      object-position: top center; 
+      border-radius:10px;
+      box-shadow: 0 10px 30px rgba(10,10,10,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+      display:block;
+      margin:0 auto;
+    }
+    @media (max-width:576px){
+      .profile-img { width:180px; height:135px; }
+    }
+
+    /* İlgi alanı kartı */
+    .interest-card{
+      max-width:680px;
+      margin:0.9rem auto;
+      background:#fff;
+      border-radius:10px;
+      padding:1rem 1.15rem;
+      box-shadow: 0 8px 30px rgba(10,10,10,0.04);
+      text-align:left;
+    }
+    .interest-card h3 { margin-bottom:.5rem; font-size:1rem; }
+    .interest-list { list-style:none; padding:0; margin:0; }
+    .interest-list li { display:flex; gap:.7rem; align-items:flex-start; margin-bottom:.6rem; }
+    .interest-list .icon { color:var(--accent); margin-top:.15rem; font-size:1.15rem; min-width:20px; }
+
+    /* Footer sabit */
+    .site-footer {
+      position:fixed;
+      left:0; right:0; bottom:0;
+      height:var(--footer-height);
+      background:#0b1726;
+      color:#fff;
+      z-index:1030;
+      display:flex;
+      align-items:center;
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.12);
+    }
+    .site-footer .container { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .site-footer a { color:#fff; opacity:.95; text-decoration:none; }
+    .site-footer a:hover { text-decoration:underline; opacity:1; }
+
+    /* Küçük estetik */
+    h2.h4 { font-weight:600; }
+    .muted { color:var(--muted); }
+  </style>
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 <body>
+  <!-- NAVBAR  -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">FERHAT DEMİR</a>
@@ -26,8 +104,6 @@
             <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
           </li>
 
-          
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,20 +111,20 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://www.instagram.com/ferhat.demr_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i class="bi bi-instagram me-2" aria-hidden="true"></i> Instagram
+                <a class="dropdown-item d-flex align-items-center" href="https://www.instagram.com/ferhat.demr_/" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-instagram me-2" aria-hidden="true"></i> Instagram
                 </a>
-            </li>
-            <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://www.linkedin.com/in/ferhat-demir-2a0b40245/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <i class="bi bi-linkedin me-2" aria-hidden="true"></i> LinkedIn
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="https://www.linkedin.com/in/ferhat-demir-2a0b40245/" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-linkedin me-2" aria-hidden="true"></i> LinkedIn
                 </a>
-            </li>
-            <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://github.com/FerhatDemr" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i class="bi bi-github me-2" aria-hidden="true"></i> GitHub
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="https://github.com/FerhatDemr" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-github me-2" aria-hidden="true"></i> GitHub
                 </a>
-            </li>
+              </li>
             </ul>
           </li>
 
@@ -56,69 +132,63 @@
       </div>
     </div>
   </nav>
-  <main class="container my-4">
 
-  
-  <section class="row align-items-center g-4">
-    <div class="col-md-4 text-center">
-      
-    <img src="assets/images/profile.jpg"
-     alt="Ferhat Demir"
-     class="img-fluid"
-     style="width:160px; height:160px; object-fit:cover; border-radius:6px;">
+  <!-- ANA İÇERİK -->
+  <main class="container">
 
-      <p class="small text-muted mt-2">FERHAT DEMİR</p>
+    <!-- PROFİL SATIRI -->
+    <section class="row align-items-center g-4">
+      <div class="col-md-4 text-center">
+        <img src="assets/images/profile.jpg" alt="Ferhat Demir" class="profile-img">
+        <p class="small muted mt-2">FERHAT DEMİR</p>
+      </div>
+
+      <div class="col-md-8">
+        <h2 class="h4 mb-2">Merhaba, ben Ferhat</h2>
+        <p class="mb-1 muted">Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği 3.sınıf öğrencisiyim.
+          Ayrıca şu anda "Google Developer Groups on Campus Süleyman Demirel University" topluluğunda Core Team üyesi olarak Sponsorluk Takımında aktif rol alıyorum.
+        </p>
+        
+      </div>
+    </section>
+
+    <!-- İLGİ ALANLARI -->
+    <section class="mt-4">
+      <div class="interest-card">
+        <h3>İlgi Alanlarım</h3>
+        <ul class="interest-list">
+          <li>
+            <div class="icon"><i class="bi bi-phone"></i></div>
+            <div><strong>Mobil uygulama geliştirme</strong><br><small class="text-muted">(.NET MAUI)</small></div>
+          </li>
+
+          <li>
+            <div class="icon"><i class="bi bi-code-slash"></i></div>
+            <div><strong>C#</strong><br><small class="text-muted">masaüstü ve mobil uygulamalar</small></div>
+          </li>
+
+          <li>
+            <div class="icon"><i class="bi bi-file-earmark-code"></i></div>
+            <div><strong>Python</strong><br><small class="text-muted">veri işleme, script & prototip</small></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SABİT FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© <span id="site-year"></span> <strong>FERHAT DEMİR</strong></div>
+      <div>Tel: <a href="tel:+905xxxxxxxxx">+90 536 784 3900</a></div>
     </div>
+  </footer>
 
-    <div class="col-md-8">
-      <h2 class="h4 mb-2">Merhaba, ben Ferhat</h2>
-      <p class="mb-1">Süleyman Demirel Üniversitesi'nde Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Dersler ve kişisel projeler 
-        aracılığıyla web geliştirme ve mobil uygulama geliştirme (özellikle .NET MAUI) konularında pratik yapıyorum.</p>
-      
-      
-    </div>
-  </section>
-  <!-- İLGİ ALANLARI (kısa) -->
-  <section class="mt-4 text-center">
-  <h3 class="h6 mb-2">İlgi Alanlarım</h3>
-    <ul class="list-unstyled small mx-auto" style="max-width:360px;">
-      <li>• Web geliştirme (HTML/CSS/JS)</li>
-      <li>• Mobil uygulama (.NET MAUI)</li>
-      <li>• Veri Madenciliği</li>
-      <li>• Makine Öğrenmesi</li>
-    </ul>
-  </section>
-
-  <!-- GÖMÜLÜ VIDEO  -->
-  <section class="mt-4">
-    
-
-    <!-- YouTube embed: VIDEO_ID yerine gerçek id koy -->
-    <div class="mx-auto" style="max-width:560px;">
-    <div class="ratio ratio-16x9">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/O9vO_CVNXlg?si=st2LKizKTUdo3Ci9" 
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>    </div>
-
-    
-  </section>
-
-  
-
-  
-
-</main>
-
-  <footer class="footer fixed-bottom bg-dark text-light py-2">
-  <div class="container d-flex justify-content-between align-items-center">
-    <div><small>© <span id="site-year-2"></span> <strong>FERHAT DEMİR</strong></small></div>
-    <div><small>Tel: <a href="tel:+905xxxxxxxxx" class="text-decoration-none text-light">+90 536 784 3900</a></small></div>
-  </div>
-</footer>
-<script>
-  document.getElementById('site-year-2').textContent = new Date().getFullYear();
-</script>
+  <!-- SCRIPTLER -->
+  <script>
+    document.getElementById('site-year').textContent = new Date().getFullYear();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
