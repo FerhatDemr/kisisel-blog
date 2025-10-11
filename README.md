@@ -6,14 +6,13 @@
 
 ## 👤 Hakkımda
 Merhaba! Ben **Ferhat Demir**, Bilgisayar Mühendisliği öğrencisiyim.  
-Bu projede kendimi tanıttığım, hedeflerimi ve becerilerimi paylaştığım basit ama işlevsel bir **kişisel blog sitesi** hazırladım. 🎯
+Bu projede kendimi tanıttığım, becerilerimi paylaştığım basit ama işlevsel bir **kişisel blog sitesi** hazırladım. 🎯
 
 ---
 
 ## ✨ Özellikler
 - 📝 Kendimi tanıtan metin
-- 🖼️ Resimler (profil fotoğrafı ve içerik görselleri)
-- 🎥 Sayfada gömülü ve oynatılabilir video
+- 🖼️ Resimler (profil fotoğrafı)
 - 🔗 Üst kısımda navigation bar 
 - 📜 Alt kısımda footer: `© 2025 Ferhat Demir — Tel: 0536 784 3900`
 - 📱 Responsive tasarım (mobil ve bilgisayar uyumlu)
