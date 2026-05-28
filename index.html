@@ -5,187 +5,420 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FERHAT'S BLOG</title>
 
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --muted:#6c757d;
-      --accent:#0b5fff;
-      --footer-height:68px; 
+    :root {
+      --accent: #5c6ef8;
+      --accent-dark: #3f51e8;
+      --accent-soft: rgba(92,110,248,0.10);
+      --bg: #0f1117;
+      --bg2: #161b27;
+      --bg3: #1e2436;
+      --card-bg: #1a2035;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #7b8299;
+      --footer-h: 64px;
     }
 
-    /* Genel sayfa düzeni */
-    html,body { height:100%; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:#f6f8fb;
-      color:#111827;
-      padding-bottom: var(--footer-height); 
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: var(--footer-h);
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Container paddings */
-    main.container {
-      padding-top:1.5rem;
-      padding-bottom:1.5rem;
-      max-width: 980px;
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(15,17,23,0.92) !important;
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: .85rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1040;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: .5px;
+      background: linear-gradient(135deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-link {
+      color: var(--muted) !important;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff !important; }
+    .dropdown-menu {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .4rem;
+    }
+    .dropdown-item {
+      color: var(--text);
+      border-radius: 7px;
+      font-size: .88rem;
+      padding: .55rem .85rem;
+      transition: background .15s;
+    }
+    .dropdown-item:hover { background: var(--accent-soft); color: #fff; }
+    .navbar-toggler { border-color: var(--border); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ── HERO / PROFILE ── */
+    .hero {
+      max-width: 960px;
+      margin: 3rem auto 0;
+      padding: 0 1rem;
+    }
+    .hero-card {
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      animation: fadeUp .6s ease both;
+    }
+    @media (max-width: 640px) {
+      .hero-card { flex-direction: column; text-align: center; padding: 1.75rem 1.25rem; gap: 1.5rem; }
     }
 
-    /* Profil resim */
+    .profile-wrap { position: relative; flex-shrink: 0; }
     .profile-img {
-      width:260px;
-      height:300px;            
-      object-fit:cover;
-      object-position: top center; 
-      border-radius:10px;
-      box-shadow: 0 10px 30px rgba(10,10,10,0.08);
-      border: 1px solid rgba(0,0,0,0.05);
-      display:block;
-      margin:0 auto;
+      width: 140px;
+      height: 160px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+      display: block;
     }
-    @media (max-width:576px){
-      .profile-img { width:180px; height:135px; }
+    .profile-badge {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .2rem .75rem;
+      border-radius: 99px;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(92,110,248,.5);
     }
 
-    /* İlgi alanı kartı */
-    .interest-card{
-      max-width:680px;
-      margin:0.9rem auto;
-      background:#fff;
-      border-radius:10px;
-      padding:1rem 1.15rem;
-      box-shadow: 0 8px 30px rgba(10,10,10,0.04);
-      text-align:left;
+    .hero-text { flex: 1; }
+    .hero-greeting {
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: .4rem;
     }
-    .interest-card h3 { margin-bottom:.5rem; font-size:1rem; }
-    .interest-list { list-style:none; padding:0; margin:0; }
-    .interest-list li { display:flex; gap:.7rem; align-items:flex-start; margin-bottom:.6rem; }
-    .interest-list .icon { color:var(--accent); margin-top:.15rem; font-size:1.15rem; min-width:20px; }
+    .hero-name {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 .5rem;
+    }
+    .hero-sub {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0 0 1.25rem;
+    }
+    .social-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+    @media (max-width: 640px) { .social-pills { justify-content: center; } }
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .38rem .9rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      font-size: .82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .social-pill:hover { border-color: var(--accent); color: #fff; background: var(--accent-soft); }
+    .social-pill i { font-size: 1rem; }
 
-    /* Footer sabit */
+    /* ── SECTION TITLE ── */
+    .section-title {
+      max-width: 960px;
+      margin: 2.5rem auto .9rem;
+      padding: 0 1rem;
+    }
+    .section-title h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin: 0;
+    }
+    .section-title h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── INTEREST CARDS ── */
+    .interests-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .icard {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      animation: fadeUp .6s ease both;
+    }
+    .icard:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(92,110,248,0.12);
+    }
+    .icard-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .icard h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 .35rem;
+    }
+    .icard p {
+      font-size: .84rem;
+      color: var(--muted);
+      margin: 0 0 1rem;
+      line-height: 1.55;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      font-size: .72rem;
+      font-weight: 600;
+      padding: .2rem .65rem;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: .3px;
+    }
+
+    /* ── FOOTER ── */
     .site-footer {
-      position:fixed;
-      left:0; right:0; bottom:0;
-      height:var(--footer-height);
-      background:#0b1726;
-      color:#fff;
-      z-index:1030;
-      display:flex;
-      align-items:center;
-      box-shadow: 0 -4px 18px rgba(0,0,0,0.12);
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      height: var(--footer-h);
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      z-index: 1030;
+      display: flex;
+      align-items: center;
     }
-    .site-footer .container { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-    .site-footer a { color:#fff; opacity:.95; text-decoration:none; }
-    .site-footer a:hover { text-decoration:underline; opacity:1; }
+    .site-footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      max-width: 960px;
+    }
+    .site-footer .copy { font-size: .82rem; color: var(--muted); }
+    .site-footer .copy strong { color: var(--text); }
+    .footer-contact {
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .footer-contact a { color: var(--accent); text-decoration: none; }
+    .footer-contact a:hover { text-decoration: underline; }
 
-    /* Küçük estetik */
-    h2.h4 { font-weight:600; }
-    .muted { color:var(--muted); }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .icard:nth-child(2) { animation-delay: .1s; }
+    .icard:nth-child(3) { animation-delay: .2s; }
   </style>
 </head>
 
 <body>
-  <!-- NAVBAR  -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
       <a class="navbar-brand" href="#">FERHAT DEMİR</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-              aria-expanded="false" aria-label="Toggle navigation">
+              data-bs-target="#navMenu" aria-controls="navMenu"
+              aria-expanded="false" aria-label="Menüyü aç/kapat">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
+            <a class="nav-link active" href="#">Ana Sayfa</a>
           </li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+            <a class="nav-link dropdown-toggle" href="#" id="socialDrop"
                role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sosyal Medya
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="socialDrop">
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://www.instagram.com/ferhat.demr_/" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-instagram me-2" aria-hidden="true"></i> Instagram
+                <a class="dropdown-item" href="https://www.instagram.com/ferhat.demr_/" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-instagram me-2"></i>Instagram
                 </a>
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://www.linkedin.com/in/ferhat-demir-2a0b40245/" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-linkedin me-2" aria-hidden="true"></i> LinkedIn
+                <a class="dropdown-item" href="https://www.linkedin.com/in/ferhat-demir-2a0b40245/" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-linkedin me-2"></i>LinkedIn
                 </a>
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://github.com/FerhatDemr" target="_blank" rel="noopener noreferrer">
-                  <i class="bi bi-github me-2" aria-hidden="true"></i> GitHub
+                <a class="dropdown-item" href="https://github.com/FerhatDemr" target="_blank" rel="noopener noreferrer">
+                  <i class="bi bi-github me-2"></i>GitHub
                 </a>
               </li>
             </ul>
           </li>
-
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- ANA İÇERİK -->
-  <main class="container">
-
-    <!-- PROFİL SATIRI -->
-    <section class="row align-items-center g-4">
-      <div class="col-md-4 text-center">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="profile-wrap">
         <img src="assets/images/profile.jpg" alt="Ferhat Demir" class="profile-img">
-        <p class="small muted mt-2">FERHAT DEMİR</p>
+        <span class="profile-badge">SDÜ · BİLGİSAYAR MÜH.</span>
       </div>
 
-      <div class="col-md-8">
-        <h2 class="h4 mb-2">Merhaba, ben Ferhat</h2>
-        <p class="mb-1 muted">Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği 3.sınıf öğrencisiyim.
-          Ayrıca şu anda "Google Developer Groups on Campus Süleyman Demirel University" topluluğunda Core Team üyesi olarak Sponsorluk Takımında aktif rol alıyorum.
+      <div class="hero-text">
+        <p class="hero-greeting">Hoş Geldiniz</p>
+        <h1 class="hero-name">Merhaba, ben Ferhat</h1>
+        <p class="hero-sub">
+          Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği 3. sınıf öğrencisiyim.
+          Google Developer Groups on Campus SDÜ topluluğunda Core Team üyesi olarak
+          Sponsorluk Takımı'nda aktif rol alıyorum.
         </p>
-        
+        <div class="social-pills">
+          <a href="https://github.com/FerhatDemr" class="social-pill" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/ferhat-demir-2a0b40245/" class="social-pill" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://www.instagram.com/ferhat.demr_/" class="social-pill" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- İLGİ ALANLARI -->
-    <section class="mt-4">
-      <div class="interest-card">
-        <h3>İlgi Alanlarım</h3>
-        <ul class="interest-list">
-          <li>
-            <div class="icon"><i class="bi bi-phone"></i></div>
-            <div><strong>Mobil uygulama geliştirme</strong><br><small class="text-muted">(.NET MAUI)</small></div>
-          </li>
+  <!-- İLGİ ALANLARI -->
+  <div class="section-title">
+    <h2><i class="bi bi-stars me-1"></i> İlgi Alanlarım</h2>
+  </div>
 
-          <li>
-            <div class="icon"><i class="bi bi-code-slash"></i></div>
-            <div><strong>C#</strong><br><small class="text-muted">masaüstü ve mobil uygulamalar</small></div>
-          </li>
+  <div class="interests-grid">
 
-          <li>
-            <div class="icon"><i class="bi bi-file-earmark-code"></i></div>
-            <div><strong>Python</strong><br><small class="text-muted">veri işleme, script & prototip</small></div>
-          </li>
-        </ul>
+    <!-- .NET MVC -->
+    <div class="icard">
+      <div class="icard-icon"><i class="bi bi-layers"></i></div>
+      <h4>.NET MVC</h4>
+      <p>ASP.NET Core MVC ile sunucu taraflı web uygulamaları geliştirme; MVC mimarisi, Razor Views ve RESTful API tasarımı.</p>
+      <div class="tag-row">
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">C#</span>
+        <span class="tag">Razor</span>
+        <span class="tag">Entity Framework</span>
       </div>
-    </section>
+    </div>
 
-  </main>
+    <!-- .NET MAUI -->
+    <div class="icard">
+      <div class="icard-icon"><i class="bi bi-phone"></i></div>
+      <h4>.NET MAUI</h4>
+      <p>Tek kod tabanıyla Android, iOS, macOS ve Windows'u hedefleyen çapraz platform mobil ve masaüstü uygulama geliştirme.</p>
+      <div class="tag-row">
+        <span class="tag">.NET MAUI</span>
+        <span class="tag">C#</span>
+        <span class="tag">XAML</span>
+        <span class="tag">Cross-Platform</span>
+      </div>
+    </div>
 
-  <!-- SABİT FOOTER -->
+    <!-- C# -->
+    <div class="icard">
+      <div class="icard-icon"><i class="bi bi-code-slash"></i></div>
+      <h4>C# & .NET</h4>
+      <p>Nesne yönelimli programlama, LINQ, async/await ve modern .NET ekosistemiyle güçlü uygulama altyapıları oluşturma.</p>
+      <div class="tag-row">
+        <span class="tag">OOP</span>
+        <span class="tag">LINQ</span>
+        <span class="tag">Async/Await</span>
+        <span class="tag">.NET 8</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div>© <span id="site-year"></span> <strong>FERHAT DEMİR</strong></div>
-      <div>Tel: <a href="tel:+905xxxxxxxxx">+90 536 784 3900</a></div>
+      <p class="copy mb-0">© <span id="site-year"></span> <strong>FERHAT DEMİR</strong></p>
+      <p class="footer-contact mb-0">
+        <i class="bi bi-telephone-fill me-1"></i>
+        <a href="tel:+905367843900">+90 536 784 3900</a>
+      </p>
     </div>
   </footer>
 
-  <!-- SCRIPTLER -->
   <script>
     document.getElementById('site-year').textContent = new Date().getFullYear();
   </script>
