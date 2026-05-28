@@ -33,7 +33,7 @@
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      padding-bottom: var(--footer-h);
+      padding-bottom: calc(var(--footer-h) + 1.5rem);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -194,7 +194,7 @@
     .interests-grid {
       max-width: 960px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 1rem 2.5rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
