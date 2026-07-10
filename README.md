@@ -14,7 +14,7 @@ Bu projede kendimi tanıttığım, becerilerimi paylaştığım basit ama işlev
 - 📝 Kendimi tanıtan metin
 - 🖼️ Resimler (profil fotoğrafı)
 - 🔗 Üst kısımda navigation bar 
-- 📜 Alt kısımda footer: `© 2025 Ferhat Demir — Tel: 0536 784 3900`
+- 📜 Alt kısımda footer: `© 2025 Ferhat Demir — E-posta: ferhattt.demrrr@gmail.com`
 - 📱 Responsive tasarım (mobil ve bilgisayar uyumlu)
 - ☁️ Ücretsiz domain altında yayın (**Vercel**)
 
